@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog'
 import { DeleteDialogComponent } from './components/customers/dialog/delete-dialog/delete-dialog.component';
 
 
@@ -33,6 +34,7 @@ import { DeleteDialogComponent } from './components/customers/dialog/delete-dial
     MatFormFieldModule,
     MatDividerModule,
     MatTableModule,
+    MatDialogModule,
     MatInputModule,
     MatButtonModule,
     MatGridListModule,

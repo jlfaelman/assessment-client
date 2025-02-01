@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { CustomersService } from 'src/app/services/customers.service';
+
 
 @Component({
   selector: 'app-delete-dialog',
@@ -6,6 +10,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./delete-dialog.component.css']
 })
 export class DeleteDialogComponent {
-  
-  constructor(public dialogRef: MatDialogRef<DeleteConfirmationDialogComponent>) {}
+
+  constructor(
+    public deleteRef: MatDialogRef<DeleteDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { customerId:number },
+    private customer: CustomersService,
+    private router:Router,
+  ) {}
+
+  onClose(): void {
+    this.deleteRef.close(false);
+  }
+
+  onConfirm(): void {
+    this.customer.deleteCustomer(this.data.customerId).subscribe((response=>{
+      this.deleteRef.close(true);
+    }))
+  }
 }

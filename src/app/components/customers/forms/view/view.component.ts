@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomersService } from 'src/app/services/customers.service';
 import { Customer } from 'src/app/interface/customer';
+
+
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
@@ -18,12 +20,16 @@ export class ViewComponent {
     contactNumber: "",
   };
   currentRoute: string = "";
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private customer: CustomersService, private router: Router) { }
+  constructor(
+    private fb: FormBuilder, 
+    private route: ActivatedRoute, 
+    private customer: CustomersService, 
+    private router: Router,
+    
+  ) { }
 
   ngOnInit(): void {
     this.currentRoute = this.route.snapshot.url[0].path;
-
-
     this.customerForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -52,17 +58,13 @@ export class ViewComponent {
       })
       
     }
-
-
-
-   
   }
 
   onSubmit(): void {
     if (this.currentRoute == "view") {
       if (this.customerForm.valid) {
         this.customer.updateCustomer(this.customerId, this.customerForm.value).subscribe((response) => {
-          console.log(response)
+          this.router.navigate(['/'])
         })
       } else {
         console.log('Form Invalid');
@@ -70,16 +72,9 @@ export class ViewComponent {
     }
     if (this.currentRoute == "add") {
       if (this.customerForm.valid) {
-        this.customer.createCustomer(this.customerForm.value).subscribe(
-          response => {
-            if(response){
-              this.router.navigate(['/'])
-            }
-          },
-          error => {
-            console.log(error)
-          }
-        )
+        this.customer.createCustomer(this.customerForm.value).subscribe((response) => {
+          this.router.navigate(['/'])
+        });
       } else {
         console.log('Form Invalid');
       }
