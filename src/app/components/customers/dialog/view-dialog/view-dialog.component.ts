@@ -22,7 +22,6 @@ export class ViewDialogComponent {
   ) { }
     
   ngOnInit():void {
-   console.log(this.data)
   }
   onClose(): void {
     this.viewRef.close(false);
