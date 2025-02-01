@@ -11,27 +11,27 @@ export class CustomersService {
 
   constructor(private http: HttpClient) { }
 
-  createUser(customer: Customer): Observable<Customer> {
+  createCustomer(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(this.apiUrl, customer);
   }
 
 
-  getUsers(): Observable<Customer[]> {
+  getCustomers(): Observable<Customer[]> {
     return this.http.get<Customer[]>(this.apiUrl);
   }
 
 
-  getUserById(id: number): Observable<Customer> {
+  getCustomerById(id: number): Observable<Customer> {
     return this.http.get<Customer>(`${this.apiUrl}/${id}`);
   }
 
 
-  updateUser(id: number, customer: Customer): Observable<Customer> {
+  updateCustomer(id: number, customer: Customer): Observable<Customer> {
     return this.http.put<Customer>(`${this.apiUrl}/${id}`, customer);
   }
 
 
-  deleteUser(id: number): Observable<void> {
+  deleteCustomer(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
