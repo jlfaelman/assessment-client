@@ -9,7 +9,8 @@ import { CustomersService } from 'src/app/services/customers.service';
 
 })
 export class CustomersComponent {
-  columns: string[] = ['First Name','Last Name','Email','Contact No.'];
+
+  columns: string[] = ['firstName','lastName','email','contactNumber', 'id'];
   customers: Customer[] = []
   constructor(private cs:CustomersService){}
 
