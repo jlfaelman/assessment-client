@@ -1,33 +1,34 @@
+<button mat-button routerLink="/add">Add Customer</button>
+
 <table mat-table [dataSource]="customers" class="mat-elevation-z8">
-
-
     <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef> First Name </th>
-      <td mat-cell *matCellDef="let customer"> {{customer.firstName}} </td>
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let customer"> {{customer.firstName}} </td>
     </ng-container>
-  
+
     <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef> Last Name </th>
-      <td mat-cell *matCellDef="let customer"> {{customer.lastName}} </td>
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let customer"> {{customer.lastName}} </td>
     </ng-container>
-  
+
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> Email </th>
-      <td mat-cell *matCellDef="let customer"> {{customer.email}} </td>
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let customer"> {{customer.email}} </td>
     </ng-container>
-  
+
     <ng-container matColumnDef="contactNumber">
-      <th mat-header-cell *matHeaderCellDef> Contact number </th>
-      <td mat-cell *matCellDef="let customer"> {{customer.contactNumber}} </td>
+        <th mat-header-cell *matHeaderCellDef> Contact number </th>
+        <td mat-cell *matCellDef="let customer"> {{customer.contactNumber}} </td>
     </ng-container>
 
     <ng-container matColumnDef="id" class="">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let customer"> {{customer.id}} </td>
+        <td mat-cell *matCellDef="let customer">   
+            <button mat-flat-button (click)="viewCustomer(customer.id)">Edit</button>    
+            <button mat-flat-button >Delete</button>    
+        </td>
     </ng-container>
-  
+
     <tr mat-header-row *matHeaderRowDef="columns"></tr>
     <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-  </table>
-  
-  
+</table>

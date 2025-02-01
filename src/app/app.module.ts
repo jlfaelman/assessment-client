@@ -12,12 +12,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewComponent } from './components/customers/forms/view/view.component';
 import { MatTableModule } from '@angular/material/table';
+import { AppRoutingModule } from './app-routing.module';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
+import { DeleteDialogComponent } from './components/customers/dialog/delete-dialog/delete-dialog.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomersComponent,
-    ViewComponent
+    ViewComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -25,11 +31,14 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     MatCardModule,
     MatFormFieldModule,
+    MatDividerModule,
     MatTableModule,
     MatInputModule,
     MatButtonModule,
+    MatGridListModule,
     FormsModule,
     ReactiveFormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
