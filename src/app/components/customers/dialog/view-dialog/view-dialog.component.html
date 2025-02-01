@@ -1,0 +1,25 @@
+<mat-dialog-content>
+    <h2>User Information</h2>
+    <div class="details-container">
+        <div class="flex gap-5">
+            <span>First Name: </span>
+            <span>{{data.firstName}}</span>
+        </div>
+        <div class="flex gap-5">
+            <span>First Name: </span>
+            <span>{{data.lastName}}</span>
+        </div>
+        <div class="flex gap-5">
+            <span>First Name: </span>
+            <span>{{data.email}}</span>
+        </div>
+        <div class="flex gap-5">
+            <span>First Name: </span>
+            <span>{{data.contactNumber}}</span>
+        </div>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onClose()">Close</button>
+</mat-dialog-actions>

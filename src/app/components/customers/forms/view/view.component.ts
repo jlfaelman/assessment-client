@@ -61,7 +61,7 @@ export class ViewComponent {
   }
 
   onSubmit(): void {
-    if (this.currentRoute == "view") {
+    if (this.currentRoute == "edit") {
       if (this.customerForm.valid) {
         this.customer.updateCustomer(this.customerId, this.customerForm.value).subscribe((response) => {
           this.router.navigate(['/'])

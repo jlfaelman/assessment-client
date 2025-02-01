@@ -17,6 +17,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog'
 import { DeleteDialogComponent } from './components/customers/dialog/delete-dialog/delete-dialog.component';
+import { ViewDialogComponent } from './components/customers/dialog/view-dialog/view-dialog.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { DeleteDialogComponent } from './components/customers/dialog/delete-dial
     AppComponent,
     CustomersComponent,
     ViewComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    ViewDialogComponent
   ],
   imports: [
     BrowserModule,

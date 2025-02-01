@@ -4,6 +4,7 @@ import { Customer } from 'src/app/interface/customer';
 import { CustomersService } from 'src/app/services/customers.service';
 import { DeleteDialogComponent } from './dialog/delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ViewDialogComponent } from './dialog/view-dialog/view-dialog.component';
 
 
 
@@ -31,10 +32,8 @@ export class CustomersComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('User confirmed delete');
-        // Proceed with delete action
       } else {
         console.log('User canceled the delete');
-        // Handle cancel action
       }
     });
   }
@@ -42,8 +41,19 @@ export class CustomersComponent {
   ngOnInit(){
     this.loadCustomers();
   }
+  editCustomer(id:number){
+    this.router.navigate(['/edit',id])
+  }
   viewCustomer(id:number){
-    this.router.navigate(['/view',id])
+    this.cs.getCustomerById(id).subscribe((response)=>{
+      const dialogRef = this.dialog.open(ViewDialogComponent,{
+        data:response
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        
+      });
+    })
   }
   loadCustomers(){
     this.cs.getCustomers().subscribe((c)=>{
