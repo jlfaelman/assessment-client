@@ -5,6 +5,7 @@ import { CustomersService } from 'src/app/services/customers.service';
 import { DeleteDialogComponent } from './dialog/delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewDialogComponent } from './dialog/view-dialog/view-dialog.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 
@@ -17,12 +18,17 @@ import { ViewDialogComponent } from './dialog/view-dialog/view-dialog.component'
 export class CustomersComponent {
 
   columns: string[] = ['firstName','lastName','email','contactNumber', 'id'];
-  customers: Customer[] = []
+  customers: MatTableDataSource<Customer>;
   constructor(
     private cs:CustomersService, 
     private router: Router,
     public  dialog: MatDialog,
-  ){}
+  ){
+
+    const initialData: Customer[] = [];
+
+    this.customers = new MatTableDataSource(initialData);
+  }
 
   openDelete(customerId:any){
     const dialogRef = this.dialog.open(DeleteDialogComponent,{
@@ -30,12 +36,13 @@ export class CustomersComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('User confirmed delete');
-      } else {
-        console.log('User canceled the delete');
-      }
+      this.resetTable();
+      this.loadCustomers();
     });
+  }
+
+  resetTable(): void {
+    this.customers.data = [];
   }
 
   ngOnInit(){
@@ -57,7 +64,7 @@ export class CustomersComponent {
   }
   loadCustomers(){
     this.cs.getCustomers().subscribe((c)=>{
-      this.customers = c;
+      this.customers.data = c;
     })
   }
 }
